@@ -11,7 +11,6 @@ function Template({children}: {children: JSX.Element}) {
         { children }
       </main>
       <footer>
-
       </footer>
     </C.Container>
    );

@@ -1,10 +1,10 @@
 import Template from "./components/Template";
-import MainRoutes from "./MainRoutes";
+import Home from "./pages/Home/home";
 
 function App() {
   return (
     <Template>
-      <MainRoutes/>
+      <Home />
     </Template>
   );
 }

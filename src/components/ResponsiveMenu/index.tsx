@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { AiOutlineMenu } from 'react-icons/ai';
 
@@ -22,10 +21,10 @@ function ResponsiveMenu() {
       </div>
       <nav>
         <ul>
-          <li><Link to={'/'}>Home</Link></li>
-          <li><Link to='/cv'>Curriculum</Link></li>
-          <li><Link to={'/projects'}>Projects</Link></li>
-          <li><Link to='/contact'>Contact</Link></li>
+          <li><a href={'/'}>Home</a></li>
+          <li><a href='/cv'>Curriculum</a></li>
+          <li><a href={'/projects'}>Projects</a></li>
+          <li><a href='/contact'>Contact</a></li>
         </ul>
       </nav>
     </C.Container>
