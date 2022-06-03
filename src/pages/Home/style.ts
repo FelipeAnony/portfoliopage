@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
@@ -14,10 +14,10 @@ export const Container = styled.div`
     grid-template-rows: 90% 10%;
     align-items: center;
 
-    @media(max-width: 450px){
+    @media (max-width: 450px) {
       align-items: flex-start;
       margin-top: 40px;
-    };
+    }
 
     .arrowIconContainer {
       display: flex;
@@ -26,8 +26,8 @@ export const Container = styled.div`
       transition: all ease 2s;
       color: white;
     }
-  };
+  }
 
-  
-
-`
+  .curriculumContainer {
+  }
+`;
