@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 type Props = {
   menuIsOpen: boolean;
@@ -11,7 +11,7 @@ export const Container = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white; 
+  color: white;
   position: relative;
   margin: 0 auto;
 
@@ -21,15 +21,15 @@ export const Container = styled.div<Props>`
   }
 
   nav {
-    transition: all ease .5s;
+    transition: all ease 0.5s;
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 0 auto;
 
-    @media(max-width: 450px){
+    @media (max-width: 450px) {
       position: absolute;
-      top: ${props => props.menuIsOpen ? '70px' : '-200px'};
+      top: ${(props) => (props.menuIsOpen ? '70px' : '-200px')};
       flex-direction: column;
       background-color: #111;
       padding: 10px 0;
@@ -39,8 +39,8 @@ export const Container = styled.div<Props>`
   li {
     display: inline-block;
     margin-left: 15px;
-    
-    @media(max-width: 450px){
+
+    @media (max-width: 450px) {
       display: block;
       margin: 15px 20px;
     }
@@ -62,9 +62,8 @@ export const Container = styled.div<Props>`
     padding-left: 20px;
     z-index: 10;
 
-    @media(min-width: 450px){
+    @media (min-width: 450px) {
       display: none;
     }
   }
-
-`
+`;

@@ -11,6 +11,23 @@ export const Container = styled.div`
   padding: 10px 0;
   color: white;
 
+  @media (max-width: 450px) {
+    .contact,
+    .techSkillsContainer,
+    .softSkillsContainer {
+      ul {
+        margin-left: -5px;
+      }
+      li {
+        font-size: 8px;
+      }
+    }
+  }
+
+  ul {
+    color: #ddd;
+  }
+
   .leftSideContainer,
   .rightSideContainer {
     display: flex;
@@ -22,65 +39,102 @@ export const Container = styled.div`
 
   .leftSideContainer {
     border-right: solid #333 thin;
+
+    .profileCard,
+    .formation {
+      width: calc(100% - 10px);
+      max-width: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px auto;
+      min-height: 100px;
+    }
+
+    .profileCard {
+      border-bottom: solid thin #333;
+      justify-content: flex-start;
+
+      .nameContainer {
+        margin-right: auto;
+        margin-left: 20px;
+        .name {
+          font-size: 26px;
+        }
+        .subtitle {
+          font-size: 12px;
+          color: #999;
+        }
+      }
+
+      .imageContainer {
+        width: 60px;
+        height: 60px;
+        border: solid thin #333;
+        border-radius: 50%;
+        margin-left: 10px;
+      }
+    }
+
+    .formation {
+      flex-direction: column;
+      font-size: 14px;
+      align-items: flex-start;
+      margin-left: 5%;
+
+      ul {
+        margin-left: 20px;
+        font-size: 11px;
+      }
+
+      .formation-title {
+        margin: 10px 0 5px;
+        color: #999;
+        font-size: 11px;
+
+        strong {
+          color: white;
+          font-size: 14px;
+        }
+      }
+    }
   }
+
   .rightSideContainer {
-  }
-
-  .profileCard,
-  .formation {
-    width: calc(100% - 10px);
-    max-width: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px auto;
-    min-height: 100px;
-  }
-
-  .contact,
-  .techSkillsContainer,
-  .softSkillsContainer {
-    width: calc(100% - 10px);
-    display: flex;
-    align-items: center;
-    margin: 10px auto;
-    height: 100px;
-  }
-
-  .nameContainer {
-    margin-right: auto;
-    margin-left: 20px;
-    .name {
-      font-size: 26px;
+    .contact,
+    .techSkillsContainer,
+    .softSkillsContainer {
+      flex-direction: column;
+      width: calc(100% - 10px);
+      display: flex;
+      align-items: flex-start;
+      margin: 10px auto;
+      min-height: 50px;
     }
-    .subtitle {
-      font-size: 12px;
-      color: #999;
-    }
-  }
-
-  .imageContainer {
-    width: 60px;
-    height: 60px;
-    border: solid thin #333;
-    border-radius: 50%;
-    margin-left: 10px;
-  }
-
-  .profileCard {
-    border-bottom: solid thin #333;
-    justify-content: flex-start;
-  }
-
-  .formation {
-    flex-direction: column;
-    font-size: 14px;
-    align-items: flex-start;
-    margin-left: 5%;
 
     ul {
-      margin-left: 20px;
-      font-size: 12px;
+      font-size: 10px;
+      list-style: none;
+
+      li {
+        margin: 3px 0 0 5px;
+      }
+    }
+
+    .contact {
+      align-items: flex-start;
+      padding: 10px 0;
+      margin-top: 35px;
+
+      a {
+        color: inherit;
+      }
+    }
+
+    .techSkillsContainer {
+    }
+
+    .softSkillsContainer {
     }
   }
 `;

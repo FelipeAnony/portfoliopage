@@ -2,6 +2,7 @@ import HomeCard from '../../components/HomeCard';
 import { IoIosArrowUp } from 'react-icons/io';
 import * as C from './style';
 import Curriculum from '../../components/Curriculum';
+import ProjectsCarrusell from '../../components/ProjectsCarrusell';
 
 function Home() {
   return (
@@ -12,9 +13,10 @@ function Home() {
           <IoIosArrowUp />
         </div>
       </div>
-      <div className="curriculumContainer">
+      <ProjectsCarrusell />
+      {/* <div className="curriculumContainer">
         <Curriculum />
-      </div>
+      </div> */}
     </C.Container>
   );
 }
