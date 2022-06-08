@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+type Props = {
+  itens: number;
+  marginValue: number;
+};
+
+export const Container = styled.div<Props>`
   width: 100%;
   height: 80vh;
   overflow: hidden;
@@ -39,10 +44,15 @@ export const Container = styled.div`
   }
 
   .itensContainer {
-    width: 100%;
+    width: calc(
+      (${(props) => props.itens}) * 100% + (${(props) => props.itens - 1}) *
+        10px
+    );
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding-left: 10px;
+    margin-left: ${(props) => props.marginValue}px;
+    transition: all ease 0.3s;
   }
 `;

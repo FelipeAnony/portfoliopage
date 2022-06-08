@@ -1,64 +1,66 @@
+import { useState } from 'react';
 import { AiFillGithub, AiOutlineArrowRight } from 'react-icons/ai';
 import { MainButton } from '../Template/styles';
 import * as C from './styles';
-import print from '../../images/print.png';
 
-function IndividualProjectCard() {
+type Props = {
+  title: string;
+  imagesList: string[];
+  technologies: string[];
+  features: string[];
+  gitLink: string;
+  tryLink: string;
+};
+
+function IndividualProjectCard({
+  title,
+  imagesList,
+  technologies,
+  features,
+  gitLink,
+  tryLink,
+}: Props) {
+  const [selectedImg, setSelectedImg] = useState(0);
+
   return (
     <C.Container>
       <div className="imagesContainer">
         <div className="mainImage">
-          <img src={print} alt="Project print" />
+          <img src={imagesList[selectedImg]} alt="Project print" />
         </div>
         <div className="imagesRow">
           <div>
-            <img src={print} alt="Project print" />
-          </div>
-          <div>
-            <img src={print} alt="Project print" />
-          </div>
-          <div>
-            <img src={print} alt="Project print" />
-          </div>
-          <div>
-            <img src={print} alt="Project print" />
-          </div>
-          <div>
-            <img src={print} alt="Project print" />
-          </div>
-          <div>
-            <img src={print} alt="Project print" />
-          </div>
-          <div>
-            <img src={print} alt="Project print" />
+            <img src={imagesList[0]} alt="Project print" />
           </div>
         </div>
       </div>
       <div className="infoContainer">
-        <div className="title">Chatter.io: realtime chat</div>
+        <div className="title">{title}</div>
         <div className="description">
           <span className="span1">Technologies used:</span>
           <ul className="technologies">
-            <li>HTML5, CSS3 and Javascript</li>
-            <li>TypeScript</li>
-            <li>React.js</li>
-            <li>Styled-Components</li>
-            <li>Firebase</li>
+            {technologies.map((e, key) => (
+              <li key={key}>{e}</li>
+            ))}
           </ul>
           <span className="span2">Features</span>
           <ul className="features">
-            <li>Real-time chat</li>
-            <li>Themes for choose</li>
-            <li>Works on all devices and screens</li>
+            {features.map((e, key) => (
+              <li key={key}>{e}</li>
+            ))}
           </ul>
         </div>
         <div className="actions">
-          <MainButton BgColor={'darkgrey'}>
+          <MainButton BgColor={'darkgrey'} Disabled={gitLink ? false : true}>
             <AiFillGithub />
-            <a href="/">See in Github</a>
+            <a onClick={(e) => !gitLink && e.preventDefault()} href={gitLink}>
+              See in Github
+            </a>
           </MainButton>
-          <MainButton BgColor={'#FF2D00'}>
-            <a href="/">Try Out now! </a>
+          <MainButton BgColor={'#FF2D00'} Disabled={tryLink ? false : true}>
+            <a onClick={(e) => !tryLink && e.preventDefault()} href={tryLink}>
+              Try Out now!{' '}
+            </a>
             <AiOutlineArrowRight />
           </MainButton>
         </div>

@@ -10,6 +10,7 @@ export const Container = styled.div`
   padding: 5px;
   background-color: #111;
   border-radius: 5px;
+  margin-right: 10px;
 
   .imagesContainer {
     width: 60%;
