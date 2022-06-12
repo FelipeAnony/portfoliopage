@@ -22,10 +22,10 @@ function ResponsiveMenu() {
             <a href={'/'}>Home</a>
           </li>
           <li>
-            <a href="/cv">Curriculum</a>
+            <a href={'/projects'}>Projects</a>
           </li>
           <li>
-            <a href={'/projects'}>Projects</a>
+            <a href="/cv">Curriculum</a>
           </li>
           <li>
             <a href="/contact">Contact</a>

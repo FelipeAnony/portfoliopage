@@ -29,9 +29,16 @@ function IndividualProjectCard({
           <img src={imagesList[selectedImg]} alt="Project print" />
         </div>
         <div className="imagesRow">
-          <div>
-            <img src={imagesList[0]} alt="Project print" />
-          </div>
+          {imagesList.map((e, key) => (
+            <div
+              key={key}
+              id={`${key}`}
+              className={`${selectedImg === key ? 'selected' : ''}`}
+              onClick={(e) => setSelectedImg(+e.currentTarget.id)}
+            >
+              <img src={e} alt="Project print" />
+            </div>
+          ))}
         </div>
       </div>
       <div className="infoContainer">
@@ -53,12 +60,22 @@ function IndividualProjectCard({
         <div className="actions">
           <MainButton BgColor={'darkgrey'} Disabled={gitLink ? false : true}>
             <AiFillGithub />
-            <a onClick={(e) => !gitLink && e.preventDefault()} href={gitLink}>
+            <a
+              onClick={(e) => !gitLink && e.preventDefault()}
+              href={gitLink}
+              target="_blank"
+              rel="noreferrer"
+            >
               See in Github
             </a>
           </MainButton>
           <MainButton BgColor={'#FF2D00'} Disabled={tryLink ? false : true}>
-            <a onClick={(e) => !tryLink && e.preventDefault()} href={tryLink}>
+            <a
+              onClick={(e) => !tryLink && e.preventDefault()}
+              href={tryLink}
+              target="_blank"
+              rel="noreferrer"
+            >
               Try Out now!{' '}
             </a>
             <AiOutlineArrowRight />

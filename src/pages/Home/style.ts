@@ -28,6 +28,43 @@ export const Container = styled.div`
     }
   }
 
+  .summary {
+    width: 90%;
+    max-width: 600px;
+    height: 80vh;
+    margin: 0 auto;
+    padding: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      margin-top: 10px;
+      line-height: 20px;
+
+      &::first-letter {
+        margin-left: 10px;
+      }
+    }
+
+    div {
+      margin-top: 20px;
+      color: black;
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .carrousellTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
   .curriculumContainer {
   }
 `;

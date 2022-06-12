@@ -1,23 +1,26 @@
-import IndividualProjectCard from '../IndividualProjectCard';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import * as C from './styles';
-import { getProjectsList } from '../../helpers/API';
 import { useEffect, useState } from 'react';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+
+import * as C from './styles';
+
+import { getProjectsList } from '../../helpers/API'; // fonte de dados pro render
+
+import IndividualProjectCard from '../IndividualProjectCard'; //importacao Do Card Interno
 
 function ProjectsCarrusell() {
   const [marginValue, setMarginValue] = useState(0);
+  const [selectedIten, setSelectedIten] = useState(0);
 
   const projectsList = getProjectsList();
 
   const handleClickRight = () => {
+    if (projectsList.length === selectedIten + 1) return;
     if (window.innerWidth < 1055.55) {
-      if (marginValue <= -(projectsList.length - 1) * (window.innerWidth * 0.9))
-        return;
       setMarginValue(marginValue - window.innerWidth * 0.9 - 10);
     } else {
-      if (marginValue <= -(projectsList.length - 1) * 950) return;
       setMarginValue(marginValue - 950 - 10);
     }
+    setSelectedIten(selectedIten + 1);
   };
 
   const handleClickLeft = () => {
@@ -27,18 +30,48 @@ function ProjectsCarrusell() {
     } else {
       setMarginValue(marginValue + 950 + 10);
     }
+    setSelectedIten(selectedIten - 1);
+  };
+
+  const handlePaginatorClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    setSelectedIten(+e.currentTarget.id);
   };
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      setMarginValue(0);
+    const moveRowListToSelection = () => {
+      if (selectedIten === 0) {
+        setMarginValue(0);
+      } else {
+        if (window.innerWidth < 1055.55) {
+          setMarginValue((window.innerWidth * 0.9 - 10) * -selectedIten);
+        } else {
+          setMarginValue((950 - 10) * -selectedIten);
+        }
+      }
+    };
 
-      //solucao perfeita: criar um state que armazena qual
-      //elemento esta em 'focus' e usar esse valor * innerWidht
-      // pra corrigir quando resize for chamado, assim corrigindo
-      //exatamente pro tamanho certo e nao pro 0
-    });
-  }, []);
+    window.addEventListener('resize', moveRowListToSelection);
+
+    return () => window.removeEventListener('resize', moveRowListToSelection);
+  }, [selectedIten]);
+
+  useEffect(() => {
+    const moveRowListToSelection = () => {
+      if (selectedIten === 0) {
+        setMarginValue(0);
+      } else {
+        if (window.innerWidth < 1055.55) {
+          setMarginValue((window.innerWidth * 0.9 - 10) * -selectedIten);
+        } else {
+          setMarginValue((950 - 10) * -selectedIten);
+        }
+      }
+    };
+
+    moveRowListToSelection();
+  }, [selectedIten]);
 
   return (
     <C.Container itens={projectsList.length} marginValue={marginValue}>
@@ -60,6 +93,18 @@ function ProjectsCarrusell() {
       </div>
       <div className="arrowRight" onClick={handleClickRight}>
         <IoIosArrowForward className="icon" />
+      </div>
+      <div className="itensCounter">
+        {projectsList.map((e, key) => (
+          <div
+            key={key}
+            onClick={(e) => handlePaginatorClick(e)}
+            id={`${key}`}
+            className={`itensCounter__iten ${
+              selectedIten === key ? 'selected' : ''
+            }`}
+          ></div>
+        ))}
       </div>
     </C.Container>
   );

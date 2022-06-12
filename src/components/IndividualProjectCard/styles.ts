@@ -46,8 +46,12 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        height: auto;
         max-height: 90%;
+        cursor: pointer;
+      }
+
+      .selected {
+        filter: blur(1px);
       }
     }
   }
@@ -75,7 +79,7 @@ export const Container = styled.div`
     }
 
     .title {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       height: 15%;
       display: flex;
       align-items: center;
