@@ -5,6 +5,11 @@ type ButtonProps = {
   BgColor: string;
 };
 
+type MessageProps = {
+  size?: string;
+  type: 'success' | 'error';
+};
+
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -61,4 +66,15 @@ export const MainButton = styled.div<ButtonProps>`
   &:hover {
     opacity: ${(props) => (props.Disabled ? 0.5 : 0.9)};
   }
+`;
+
+export const Message = styled.div<MessageProps>`
+  display: flex;
+  width: ${(props) => (props.size ? `${props.size}px` : '100%')};
+  background-color: ${(props) =>
+    props.type === 'success' ? '#00ff0040' : '#Ff0202 '};
+  border-radius: 5px;
+  margin-top: 1px;
+  font-size: 14px;
+  justify-content: center;
 `;

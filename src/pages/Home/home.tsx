@@ -4,6 +4,7 @@ import { GrDocumentPdf } from 'react-icons/gr';
 import * as C from './style';
 import ProjectsCarrusell from '../../components/ProjectsCarrusell';
 import { MainButton } from '../../components/Template/styles';
+import ContactForm from '../../components/ContactForm';
 
 function Home() {
   return (
@@ -39,6 +40,7 @@ function Home() {
         <h3>Main Projects</h3>
       </div>
       <ProjectsCarrusell />
+      <ContactForm />
     </C.Container>
   );
 }

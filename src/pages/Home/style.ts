@@ -50,7 +50,7 @@ export const Container = styled.div`
     }
 
     div {
-      margin-top: 20px;
+      margin-top: 70px;
       color: black;
       svg {
         margin-right: 10px;
