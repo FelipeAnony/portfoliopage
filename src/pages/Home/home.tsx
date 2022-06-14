@@ -1,8 +1,10 @@
-import HomeCard from '../../components/HomeCard';
 import { IoIosArrowUp } from 'react-icons/io';
 import { GrDocumentPdf } from 'react-icons/gr';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+
 import * as C from './style';
+
+import HomeCard from '../../components/HomeCard';
 import ProjectsCarrusell from '../../components/ProjectsCarrusell';
 import { MainButton } from '../../components/Template/styles';
 import ContactForm from '../../components/ContactForm';
@@ -33,8 +35,16 @@ function Home() {
           I have a fluent level of Spanish and an intermediate level of English.
         </p>
         <MainButton id="cv" className="downloadButton" BgColor="#aaa">
-          <GrDocumentPdf />
-          See My Curriculum
+          <a
+            href={
+              'https://docs.google.com/document/d/e/2PACX-1vR8qpvBPO5JBxZuoOcZdJ8smhCLqqSR8KzMsmN2jT9es4OrVE4fqXVJQYxrtCAYtllHfFos0wpHxKdj/pub'
+            }
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GrDocumentPdf />
+            See My Curriculum
+          </a>
         </MainButton>
         <MainButton BgColor={'darkgrey'}>
           <a

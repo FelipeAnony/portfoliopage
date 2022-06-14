@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import validateForm from '../../helpers/validateForm';
-import { MainButton, Message } from '../Template/styles';
-import * as C from './styles';
-import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
+import emailjs from 'emailjs-com';
+
+import * as C from './styles';
+
+import { MainButton, Message } from '../Template/styles';
+
+import validateForm from '../../helpers/validateForm';
 
 const initialFormData = {
   name: '',

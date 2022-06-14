@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, animateScroll as scroll } from 'react-scroll';
-import { MainButton } from '../Template/styles';
+
 import * as C from './styles';
+
+import { MainButton } from '../Template/styles';
 
 function HomeCard() {
   const [isLoaded, setisLoaded] = useState(false);
