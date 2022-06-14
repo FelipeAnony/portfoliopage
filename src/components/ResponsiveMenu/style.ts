@@ -39,6 +39,7 @@ export const Container = styled.div<Props>`
   li {
     display: inline-block;
     margin-left: 15px;
+    cursor: pointer;
 
     @media (max-width: 450px) {
       display: block;
