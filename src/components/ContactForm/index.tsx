@@ -23,11 +23,18 @@ function ContactForm() {
   const [formData, setFormData] = useState(initialFormData);
   const [error, setError] = useState(initialErrorData);
   const [sentMessageStatus, setsentMessageStatus] = useState(false);
+  const [captchaResponse, setCaptchaResponse] = useState<null | string>(null);
+  const [captchaError, setCaptchaError] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleCaptchaChange = (e: string | null) => {
+    setCaptchaError('');
+    setCaptchaResponse(e);
   };
 
   const handleClear = () => {
@@ -56,10 +63,16 @@ function ContactForm() {
       return;
     }
 
+    if (!captchaResponse) {
+      setCaptchaError('error');
+      return;
+    }
+
     emailjs.send(
       'service_d75qzp2',
       'template_40irtnh',
       {
+        'g-recaptcha-response': captchaResponse,
         from_name: formData.name,
         message: formData.message,
         from_email: formData.email,
@@ -74,11 +87,15 @@ function ContactForm() {
   };
 
   return (
-    <C.Container>
+    <C.Container id="contact">
       <form>
-        <h3>Contact</h3>
-        {sentMessageStatus && (
-          <Message type="success">Message sent with success</Message>
+        <h3 id="contact">Contact</h3>
+        {(sentMessageStatus || captchaError) && (
+          <Message size="95%" type={captchaError ? 'error' : 'success'}>
+            {captchaError
+              ? 'you need to make the Captcha'
+              : 'Message sent with success'}
+          </Message>
         )}
         <div className="inputContainer">
           <label htmlFor="name">Name</label>
@@ -89,7 +106,9 @@ function ContactForm() {
             value={formData.name}
             onChange={handleChange}
           />
-          <Message type="error">{error.name}</Message>
+          <Message type="error" size="95%">
+            {error.name}
+          </Message>
         </div>
         <div className="inputContainer">
           <label htmlFor="email">Email</label>
@@ -100,7 +119,9 @@ function ContactForm() {
             value={formData.email}
             onChange={handleChange}
           />
-          <Message type="error">{error.email}</Message>
+          <Message type="error" size="95%">
+            {error.email}
+          </Message>
         </div>
         <div className="inputContainer">
           <label htmlFor="subject">Subject (Optional)</label>
@@ -111,22 +132,29 @@ function ContactForm() {
             value={formData.subject}
             onChange={handleChange}
           />
-          <Message type="error">{error.subject}</Message>
+          <Message type="error" size="95%">
+            {error.subject}
+          </Message>
         </div>
         <div className="inputContainer">
           <label htmlFor="message">Your Message</label>
           <textarea
             cols={60}
-            rows={15}
+            rows={12}
             name="message"
             id="message"
             value={formData.message}
             onChange={handleChange}
           ></textarea>
-          <Message type="error">{error.message}</Message>
+          <Message type="error" size="95%">
+            {error.message}
+          </Message>
         </div>
       </form>
-      <ReCAPTCHA sitekey="6LeO3mkgAAAAAIH4kTxNiqIJL4C8LcOLOW-1lNJL" />
+      <ReCAPTCHA
+        onChange={(e) => handleCaptchaChange(e)}
+        sitekey="6LdTqG4gAAAAAPo_JbSUY5L-SxU8AYyj6exyX6OO"
+      />
       <div className="actions">
         <MainButton BgColor="#333" onClick={handleSend}>
           Send Message

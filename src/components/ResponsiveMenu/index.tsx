@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 import { AiOutlineMenu } from 'react-icons/ai';
 
@@ -19,16 +20,52 @@ function ResponsiveMenu() {
       <nav>
         <ul>
           <li>
-            <a href={'/'}>Home</a>
+            <Link
+              activeClass="active"
+              to="hello"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-300}
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <a href={'/projects'}>Projects</a>
+            <Link
+              activeClass="active"
+              to="summary"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-100}
+            >
+              Curriculum
+            </Link>
           </li>
           <li>
-            <a href="/cv">Curriculum</a>
+            <Link
+              activeClass="active"
+              to="projects"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-80}
+            >
+              Projects
+            </Link>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <Link
+              activeClass="active"
+              to="contact"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-90}
+            >
+              Contact
+            </Link>
           </li>
         </ul>
       </nav>

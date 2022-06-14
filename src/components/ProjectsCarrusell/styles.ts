@@ -8,6 +8,7 @@ type Props = {
 export const Container = styled.div<Props>`
   width: 100%;
   height: 80vh;
+  max-height: 600px;
   overflow: hidden;
   display: flex;
   align-items: center;

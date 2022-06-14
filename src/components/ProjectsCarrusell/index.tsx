@@ -74,7 +74,11 @@ function ProjectsCarrusell() {
   }, [selectedIten]);
 
   return (
-    <C.Container itens={projectsList.length} marginValue={marginValue}>
+    <C.Container
+      id="projects"
+      itens={projectsList.length}
+      marginValue={marginValue}
+    >
       <div className="arrowLeft" onClick={handleClickLeft}>
         <IoIosArrowBack className="icon" />
       </div>

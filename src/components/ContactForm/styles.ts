@@ -7,7 +7,6 @@ export const Container = styled.div`
   width: calc(100% - 20px);
   max-width: 600px;
   margin: 100px auto;
-  margin-bottom: 10px;
   border-radius: 5px;
   padding: 10px;
   align-items: center;
@@ -28,9 +27,16 @@ export const Container = styled.div`
 
     input,
     textarea {
+      width: 95%;
       border: solid thin transparent;
       border-radius: 3px;
       outline: none;
+      margin: 0 auto;
+    }
+
+    label {
+      width: 95%;
+      margin: 0 auto;
     }
 
     textarea {
@@ -42,6 +48,7 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     justify-content: center;
+    margin-top: 10px;
 
     div {
       margin-left: 30px;

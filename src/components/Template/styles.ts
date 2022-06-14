@@ -70,10 +70,11 @@ export const MainButton = styled.div<ButtonProps>`
 
 export const Message = styled.div<MessageProps>`
   display: flex;
-  width: ${(props) => (props.size ? `${props.size}px` : '100%')};
+  width: ${(props) => (props.size ? `${props.size}` : '100%')};
   background-color: ${(props) =>
     props.type === 'success' ? '#00ff0040' : '#Ff0202 '};
   border-radius: 5px;
+  margin: 0 auto;
   margin-top: 1px;
   font-size: 14px;
   justify-content: center;

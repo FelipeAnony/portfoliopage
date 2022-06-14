@@ -17,6 +17,11 @@ body {
   padding-top: 70px;
 }
 
+.active {
+  border-bottom: solid thin white;
+  
+}
+
 /* Works on Firefox */
 * {
   scrollbar-width: thin;

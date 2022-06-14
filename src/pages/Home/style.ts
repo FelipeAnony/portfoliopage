@@ -31,7 +31,7 @@ export const Container = styled.div`
   .summary {
     width: 90%;
     max-width: 600px;
-    height: 80vh;
+    height: 90vh;
     margin: 0 auto;
     padding: 10px;
     color: white;
@@ -49,9 +49,25 @@ export const Container = styled.div`
       }
     }
 
+    .downloadButton {
+      margin-top: 40px;
+
+      svg {
+        filter: invert(1);
+      }
+    }
+
     div {
-      margin-top: 70px;
-      color: black;
+      margin-top: 10px;
+      width: 80%;
+      align-items: center;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       svg {
         margin-right: 10px;
       }
@@ -63,8 +79,5 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     color: white;
-  }
-
-  .curriculumContainer {
   }
 `;
