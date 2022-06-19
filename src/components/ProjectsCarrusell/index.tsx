@@ -50,11 +50,23 @@ function ProjectsCarrusell() {
           setMarginValue((950 - 10) * -selectedIten);
         }
       }
+      console.log('fui executado');
     };
 
-    window.addEventListener('resize', moveRowListToSelection);
+    let timer: any;
 
-    return () => window.removeEventListener('resize', moveRowListToSelection);
+    const debounceHandler = () => {
+      clearInterval(timer);
+
+      timer = setTimeout(() => {
+        moveRowListToSelection();
+        console.log('fui executado');
+      }, 300);
+    };
+
+    window.addEventListener('resize', debounceHandler);
+
+    return () => window.removeEventListener('resize', debounceHandler);
   }, [selectedIten]);
 
   useEffect(() => {
