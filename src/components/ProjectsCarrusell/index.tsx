@@ -56,7 +56,7 @@ function ProjectsCarrusell() {
     let timer: any;
 
     const debounceHandler = () => {
-      clearInterval(timer);
+      clearTimeout(timer);
 
       timer = setTimeout(() => {
         moveRowListToSelection();

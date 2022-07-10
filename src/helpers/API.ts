@@ -25,6 +25,28 @@ export const getProjectsList = () => {
       tryLink: 'https://chatter-io-7f2f1.web.app/',
     },
     {
+      title: 'Weather.io - weather app',
+      imagesList: [
+        'https://firebasestorage.googleapis.com/v0/b/felipemom-407c9.appspot.com/o/homec.webp?alt=media&token=4d0bbba4-e20c-4b5e-a744-97ff99ec1c9c',
+        'https://firebasestorage.googleapis.com/v0/b/felipemom-407c9.appspot.com/o/homef.webp?alt=media&token=23b8b842-2da5-4a6e-a576-2a1505694ae0',
+        'https://firebasestorage.googleapis.com/v0/b/felipemom-407c9.appspot.com/o/mobc.webp?alt=media&token=c60329dc-b5eb-43b6-a168-3e34596a2748',
+      ],
+      technologies: [
+        'HTML5, CSS3 and JavaScript',
+        'TypeScript',
+        'React.js',
+        'SASS - SCSS',
+        'TDD - Test Driven Developement',
+      ],
+      features: [
+        'Full responsive: works on all devices and screen sizes',
+        'Show weather forecast for the nexts 3 days',
+        'Show data in Celsius and Fahrenheit',
+      ],
+      gitLink: 'https://github.com/FelipeAnony/weather.io',
+      tryLink: 'https://weatherio-bf154.web.app/',
+    },
+    {
       title: 'Ustore: Marketplace P2P',
       imagesList: [
         'https://user-images.githubusercontent.com/95437147/167314420-b1ccd98c-c93f-4dcd-ad55-2a342f0e76d2.png',
