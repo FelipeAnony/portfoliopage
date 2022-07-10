@@ -18,7 +18,6 @@ export const Container = styled.div<Props>`
   &:hover .arrowLeft,
   &:hover .arrowRight {
     opacity: 0.8;
-    background-color: #333;
   }
 
   .arrowLeft,
@@ -29,6 +28,14 @@ export const Container = styled.div<Props>`
     align-items: center;
     position: absolute;
     opacity: 0;
+    background-color: #333;
+  }
+
+  @media (max-width: 600px) {
+    .arrowLeft,
+    .arrowRight {
+      opacity: 0.6;
+    }
   }
 
   .arrowLeft {
