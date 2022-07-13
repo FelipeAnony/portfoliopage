@@ -49,8 +49,8 @@ export const getProjectsList = () => {
     {
       title: 'Ustore: Marketplace P2P',
       imagesList: [
-        'https://user-images.githubusercontent.com/95437147/167314420-b1ccd98c-c93f-4dcd-ad55-2a342f0e76d2.png',
-        'https://user-images.githubusercontent.com/95437147/167489568-3ae540dd-e35c-4666-8416-cbccb6cc2b98.png',
+        'https://firebasestorage.googleapis.com/v0/b/felipemom-407c9.appspot.com/o/ustore1.webp?alt=media&token=54515841-647b-46ab-860d-f58dfb4d2366',
+        'https://firebasestorage.googleapis.com/v0/b/felipemom-407c9.appspot.com/o/ustore2.webp?alt=media&token=939fda47-6eff-48ec-99f8-5838b92e2f93',
       ],
       technologies: [
         'HTML5, CSS3 and JavaScript',
