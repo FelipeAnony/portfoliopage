@@ -1,0 +1,36 @@
+.container {
+  cursor: pointer;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: transparent solid thin;
+  margin: 0 5px;
+}
+
+.container a {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.disabled {
+  cursor: default;
+  opacity: .5;
+}
+
+.disabled:hover{
+  opacity: .5;
+}
+
+.container svg {
+  margin-right: 5px;
+  font-size: 20px;
+  width: auto;
+  color: white;
+}
+
+.container:hover {
+  opacity: 0.9;
+}

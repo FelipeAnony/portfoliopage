@@ -2,11 +2,11 @@ import { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from 'emailjs-com';
 
-import * as C from './styles';
-
-import { MainButton, Message } from '../Template/styles';
+import Styles from './styles.module.css';
 
 import validateForm from '../../helpers/validateForm';
+import MainButton from '../MainButton';
+import Message from '../Message';
 
 const initialFormData = {
   name: '',
@@ -50,19 +50,18 @@ function ContactForm() {
     const tempSubjectError = validateForm.subject(formData.subject);
     const tempMessageError = validateForm.message(formData.message);
 
-    setError({
-      name: tempNameError || '',
-      email: tempEmailError || '',
-      subject: tempSubjectError || '',
-      message: tempMessageError || '',
-    });
-
     if (
       tempNameError ||
       tempEmailError ||
       tempSubjectError ||
       tempMessageError
     ) {
+      setError({
+        name: tempNameError || '',
+        email: tempEmailError || '',
+        subject: tempSubjectError || '',
+        message: tempMessageError || '',
+      });
       return;
     }
 
@@ -90,57 +89,64 @@ function ContactForm() {
   };
 
   return (
-    <C.Container id="contact">
+    <article className={Styles.container} id="contact">
       <form>
-        <h3 id="contact">Contact</h3>
+        <h3 id="contact" className={Styles.title}>
+          Contact
+        </h3>
         {(sentMessageStatus || captchaError) && (
-          <Message size="95%" type={captchaError ? 'error' : 'success'}>
+          <Message type={captchaError ? 'error' : 'success'}>
             {captchaError
               ? 'you need to make the Captcha'
               : 'Message sent with success'}
           </Message>
         )}
-        <div className="inputContainer">
-          <label htmlFor="name">Name</label>
+        <div className={Styles.inputContainer}>
+          <label htmlFor="name" className={Styles.label}>
+            Name
+          </label>
           <input
             name="name"
             id="name"
             type="text"
             value={formData.name}
             onChange={handleChange}
+            className={Styles.input}
           />
-          <Message type="error" size="95%">
-            {error.name}
-          </Message>
+          <Message type="error">{error.name}</Message>
         </div>
-        <div className="inputContainer">
-          <label htmlFor="email">Email</label>
+        <div className={Styles.inputContainer}>
+          <label htmlFor="email" className={Styles.label}>
+            Email
+          </label>
           <input
             name="email"
             id="email"
             type="text"
             value={formData.email}
             onChange={handleChange}
+            className={Styles.input}
           />
-          <Message type="error" size="95%">
-            {error.email}
-          </Message>
+          <Message type="error">{error.email}</Message>
         </div>
-        <div className="inputContainer">
-          <label htmlFor="subject">Subject (Optional)</label>
+        <div className={Styles.inputContainer}>
+          <label htmlFor="subject" className={Styles.label}>
+            Subject (Optional)
+          </label>
           <input
             name="subject"
             id="subject"
             type="text"
             value={formData.subject}
             onChange={handleChange}
+            className={Styles.input}
           />
-          <Message type="error" size="95%">
-            {error.subject}
-          </Message>
+          <Message type="error">{error.subject}</Message>
         </div>
-        <div className="inputContainer">
-          <label htmlFor="message">Your Message</label>
+        <div className={Styles.inputContainer}>
+          <label htmlFor="message" className={Styles.label}>
+            Your Message
+          </label>
           <textarea
             cols={60}
             rows={12}
@@ -148,25 +154,24 @@ function ContactForm() {
             id="message"
             value={formData.message}
             onChange={handleChange}
+            className={Styles.textarea}
           ></textarea>
-          <Message type="error" size="95%">
-            {error.message}
-          </Message>
+          <Message type="error">{error.message}</Message>
         </div>
       </form>
       <ReCAPTCHA
         onChange={(e) => handleCaptchaChange(e)}
         sitekey="6LdTqG4gAAAAAPo_JbSUY5L-SxU8AYyj6exyX6OO"
       />
-      <div className="actions">
-        <MainButton BgColor="#333" onClick={handleSend}>
+      <div className={Styles.actions}>
+        <MainButton bgColor="#333" onClick={handleSend}>
           Send Message
         </MainButton>
-        <MainButton BgColor="#Ff0202" onClick={handleClear}>
+        <MainButton bgColor="#Ff0202" onClick={handleClear}>
           Clear Data
         </MainButton>
       </div>
-    </C.Container>
+    </article>
   );
 }
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
-import * as C from './styles';
+import Styles from './styles.module.css';
 
 import { getProjectsList } from '../../helpers/API'; // fonte de dados pro render
 
@@ -84,11 +84,11 @@ function ProjectsCarrusell() {
   }, [selectedIten]);
 
   return (
-    <C.Container itens={projectsList.length} marginValue={marginValue}>
-      <div className="arrowLeft" onClick={handleClickLeft}>
+    <article /*itens={projectsList.length} marginValue={marginValue}*/>
+      {/* <div className="arrowLeft" onClick={handleClickLeft}>
         <IoIosArrowBack className="icon" />
       </div>
-      <div className="itensContainer">
+      <div className="itensContainer" style={{width: marginValue *  + (${(props) => props.itens - 1}) *10}}>
         {projectsList.map((e, key) => (
           <IndividualProjectCard
             title={e.title}
@@ -115,8 +115,8 @@ function ProjectsCarrusell() {
             }`}
           ></div>
         ))}
-      </div>
-    </C.Container>
+      </div> */}
+    </article>
   );
 }
 

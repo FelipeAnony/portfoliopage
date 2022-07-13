@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 import { AiOutlineMenu } from 'react-icons/ai';
 
-import * as C from './style';
+import Styles from './styles.module.css';
+
 import MenuLink from '../MenuLink';
 
 function ResponsiveMenu() {
@@ -13,27 +14,27 @@ function ResponsiveMenu() {
   };
 
   return (
-    <C.Container menuIsOpen={menuIsOpen}>
-      <div className="burguerMenuIcon">
+    <div className={Styles.container}>
+      <div className={Styles.burguerMenuIcon}>
         <AiOutlineMenu onClick={handleClick} />
       </div>
-      <nav>
+      <nav className={`${Styles.nav} ${menuIsOpen && Styles.open}`}>
         <ul>
-          <li>
+          <li className={Styles.li}>
             <MenuLink activeClass="active" href="hello" value="Home" />
           </li>
-          <li>
+          <li className={Styles.li}>
             <MenuLink activeClass="active" href="summary" value="Curriculum" />
           </li>
-          <li>
+          <li className={Styles.li}>
             <MenuLink activeClass="active" href="projects" value="Projects" />
           </li>
-          <li>
+          <li className={Styles.li}>
             <MenuLink activeClass="active" href="contact" value="Contact" />
           </li>
         </ul>
       </nav>
-    </C.Container>
+    </div>
   );
 }
 

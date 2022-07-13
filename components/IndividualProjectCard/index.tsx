@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { AiFillGithub, AiOutlineArrowRight } from 'react-icons/ai';
-import { MainButton } from '../Template/styles';
-import * as C from './styles';
+import MainButton from '../MainButton';
+
+import Styles from './styles.module.css';
 
 type Props = {
   title: string;
@@ -24,7 +25,7 @@ function IndividualProjectCard({
   const [selectedImg, setSelectedImg] = useState(0);
 
   return (
-    <C.Container>
+    <section className={Styles.ontainer}>
       <div className="imagesContainer">
         <div className="mainImage">
           <img src={imagesList[selectedImg]} alt="Project print" />
@@ -59,31 +60,35 @@ function IndividualProjectCard({
           </ul>
         </div>
         <div className="actions">
-          <MainButton BgColor={'darkgrey'} Disabled={gitLink ? false : true}>
-            <AiFillGithub />
-            <a
-              onClick={(e) => !gitLink && e.preventDefault()}
-              href={gitLink}
-              target="_blank"
-              rel="noreferrer"
-            >
-              See in Github
-            </a>
+          <MainButton bgColor={'darkgrey'} disabled={gitLink ? false : true}>
+            <>
+              <AiFillGithub />
+              <a
+                onClick={(e) => !gitLink && e.preventDefault()}
+                href={gitLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                See in Github
+              </a>
+            </>
           </MainButton>
-          <MainButton BgColor={'#FF2D00'} Disabled={tryLink ? false : true}>
-            <a
-              onClick={(e) => !tryLink && e.preventDefault()}
-              href={tryLink}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Try Out now!{' '}
-            </a>
-            <AiOutlineArrowRight />
+          <MainButton bgColor={'#FF2D00'} disabled={tryLink ? false : true}>
+            <>
+              <a
+                onClick={(e) => !tryLink && e.preventDefault()}
+                href={tryLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Try Out now!{' '}
+              </a>
+              <AiOutlineArrowRight />
+            </>
           </MainButton>
         </div>
       </div>
-    </C.Container>
+    </section>
   );
 }
 

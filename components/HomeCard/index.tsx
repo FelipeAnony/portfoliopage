@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-
-import * as C from './styles';
-
-import { MainButton } from '../Template/styles';
+import MainButton from '../MainButton';
 import MenuLink from '../MenuLink';
+
+import Styles from './styles.module.css';
 
 function HomeCard() {
   const [isLoaded, setisLoaded] = useState(false);
@@ -15,15 +14,15 @@ function HomeCard() {
   }, []);
 
   return (
-    <C.Container isLoaded={isLoaded}>
-      <div className="innerContainer">
-        <div className="filterDiv">
-          <div className="infoContainer">
-            <div id="hello" className="hello">
+    <section className={Styles.container}>
+      <div className={Styles.innerContainer}>
+        <div className={Styles.filterDiv}>
+          <div className={Styles.infoContainer}>
+            <div id="hello" className={Styles.hello}>
               Hello!
             </div>
-            <div className="welcome">Welcome to my page</div>
-            <MainButton BgColor="#FF2D00">
+            <div className={Styles.welcome}>Welcome to my page</div>
+            <MainButton className={Styles.button} bgColor="#FF2D00">
               <MenuLink
                 activeClass="active"
                 href="summary"
@@ -33,7 +32,7 @@ function HomeCard() {
           </div>
         </div>
       </div>
-    </C.Container>
+    </section>
   );
 }
 

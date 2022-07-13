@@ -1,18 +1,19 @@
 import Footer from '../Footer';
 import ResponsiveMenu from '../ResponsiveMenu';
-import * as C from './styles';
+
+import Styles from './styles.module.css';
 
 function Template({ children }: { children: JSX.Element }) {
   return (
-    <C.Container>
-      <header>
+    <>
+      <header className={Styles.header}>
         <ResponsiveMenu />
       </header>
-      <main>{children}</main>
-      <footer>
+      <main className={Styles.main}>{children}</main>
+      <footer className={Styles.footer}>
         <Footer />
       </footer>
-    </C.Container>
+    </>
   );
 }
 

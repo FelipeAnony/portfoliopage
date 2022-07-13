@@ -1,0 +1,81 @@
+.homeCardContainer {
+  width: 100%;
+  height: 90vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: black;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 90% 10%;
+  align-items: center;
+}
+
+.arrowIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 2s;
+  color: white;
+}
+
+.summary {
+  width: 90%;
+  max-width: 600px;
+  height: 90vh;
+  margin: 0 auto;
+  padding: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.text {
+  margin-top: 10px;
+  line-height: 20px;
+}
+
+.text::first-letter {
+  margin-left: 10px;
+}
+
+.text:nth-of-type(2) {
+  margin-bottom: 40px;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 80%;
+  align-items: center;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.pdfIcon {
+  filter: invert(1);
+} 
+
+.carrousellTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+ 
+@media (max-width: 450px) {
+  .homeCardContainer {
+    align-items: flex-start;
+    margin-top: 40px;
+  }
+}
