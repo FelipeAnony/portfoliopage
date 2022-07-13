@@ -50,7 +50,6 @@ function ProjectsCarrusell() {
           setMarginValue((950 - 10) * -selectedIten);
         }
       }
-      console.log('fui executado');
     };
 
     let timer: any;
@@ -60,7 +59,6 @@ function ProjectsCarrusell() {
 
       timer = setTimeout(() => {
         moveRowListToSelection();
-        console.log('fui executado');
       }, 300);
     };
 
@@ -86,11 +84,7 @@ function ProjectsCarrusell() {
   }, [selectedIten]);
 
   return (
-    <C.Container
-      id="projects"
-      itens={projectsList.length}
-      marginValue={marginValue}
-    >
+    <C.Container itens={projectsList.length} marginValue={marginValue}>
       <div className="arrowLeft" onClick={handleClickLeft}>
         <IoIosArrowBack className="icon" />
       </div>

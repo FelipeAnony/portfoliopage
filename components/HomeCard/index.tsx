@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-scroll';
 
 import * as C from './styles';
 
 import { MainButton } from '../Template/styles';
+import MenuLink from '../MenuLink';
 
 function HomeCard() {
   const [isLoaded, setisLoaded] = useState(false);
@@ -24,16 +24,11 @@ function HomeCard() {
             </div>
             <div className="welcome">Welcome to my page</div>
             <MainButton BgColor="#FF2D00">
-              <Link
+              <MenuLink
                 activeClass="active"
-                to="summary"
-                spy={true}
-                smooth={true}
-                duration={500}
-                offset={-100}
-              >
-                know more about me
-              </Link>
+                href="summary"
+                value="know more about me"
+              />
             </MainButton>
           </div>
         </div>

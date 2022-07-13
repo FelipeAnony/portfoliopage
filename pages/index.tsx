@@ -82,7 +82,7 @@ const Home: NextPage = () => {
             but I have a fluent level of Spanish and an intermediate level of
             English.
           </p>
-          <MainButton id="cv" className="downloadButton" BgColor="#aaa">
+          <MainButton className="downloadButton" BgColor="#aaa">
             <a
               href={
                 'https://docs.google.com/document/d/e/2PACX-1vR8qpvBPO5JBxZuoOcZdJ8smhCLqqSR8KzMsmN2jT9es4OrVE4fqXVJQYxrtCAYtllHfFos0wpHxKdj/pub'
@@ -118,7 +118,7 @@ const Home: NextPage = () => {
           </MainButton>
         </div>
         <div className="carrousellTitle">
-          <h3>Main Projects</h3>
+          <h3 id="projects">Main Projects</h3>
         </div>
         <ProjectsCarrusell />
         <ContactForm />

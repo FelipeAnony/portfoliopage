@@ -8,6 +8,7 @@
 :root{
   --scrollbar-primary-color: #444;
   --scrollbar-secondary-color: #aaa;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -46,4 +47,15 @@ body {
 img {
   max-width: 100%;
   max-height: 100%;
+}
+
+
+/* scroll effect styles: */
+
+#hello {
+  scroll-margin-top: 40vh;
+}
+
+#summary, #projects, #contact {
+  scroll-margin-top: 15vh;
 }

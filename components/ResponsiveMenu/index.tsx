@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-scroll';
 
 import { AiOutlineMenu } from 'react-icons/ai';
 
 import * as C from './style';
+import MenuLink from '../MenuLink';
 
 function ResponsiveMenu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -20,52 +20,16 @@ function ResponsiveMenu() {
       <nav>
         <ul>
           <li>
-            <Link
-              activeClass="active"
-              to="hello"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-300}
-            >
-              Home
-            </Link>
+            <MenuLink activeClass="active" href="hello" value="Home" />
           </li>
           <li>
-            <Link
-              activeClass="active"
-              to="summary"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-100}
-            >
-              Curriculum
-            </Link>
+            <MenuLink activeClass="active" href="summary" value="Curriculum" />
           </li>
           <li>
-            <Link
-              activeClass="active"
-              to="projects"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-80}
-            >
-              Projects
-            </Link>
+            <MenuLink activeClass="active" href="projects" value="Projects" />
           </li>
           <li>
-            <Link
-              activeClass="active"
-              to="contact"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-90}
-            >
-              Contact
-            </Link>
+            <MenuLink activeClass="active" href="contact" value="Contact" />
           </li>
         </ul>
       </nav>
