@@ -18,7 +18,7 @@ function MainButton({
   return (
     <div
       className={`${Styles.container} ${
-        disabled && Styles.disabled
+        disabled ? Styles.disabled : ''
       } ${className}`}
       style={{ backgroundColor: bgColor }}
       onClick={() => onClick && onClick()}

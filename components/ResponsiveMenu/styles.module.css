@@ -25,11 +25,6 @@
   cursor: pointer;
 }
 
-.li a {
-  color: inherit;
-  text-decoration: none;
-}
-
 .burguerMenuIcon {
   display: none;
 }

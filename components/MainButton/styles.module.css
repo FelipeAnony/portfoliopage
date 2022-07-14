@@ -7,11 +7,10 @@
   border-radius: 5px;
   border: transparent solid thin;
   margin: 0 5px;
+  color: white;
 }
 
 .container a {
-  color: white;
-  text-decoration: none;
   text-align: center;
 }
 

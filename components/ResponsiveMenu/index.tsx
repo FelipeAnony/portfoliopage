@@ -18,13 +18,13 @@ function ResponsiveMenu() {
       <div className={Styles.burguerMenuIcon}>
         <AiOutlineMenu onClick={handleClick} />
       </div>
-      <nav className={`${Styles.nav} ${menuIsOpen && Styles.open}`}>
+      <nav className={`${Styles.nav} ${menuIsOpen ? Styles.open : ''}`}>
         <ul>
           <li className={Styles.li}>
             <MenuLink activeClass="active" href="hello" value="Home" />
           </li>
           <li className={Styles.li}>
-            <MenuLink activeClass="active" href="summary" value="Curriculum" />
+            <MenuLink activeClass="active" href="summary" value="Summary" />
           </li>
           <li className={Styles.li}>
             <MenuLink activeClass="active" href="projects" value="Projects" />

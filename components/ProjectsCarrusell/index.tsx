@@ -1,122 +1,101 @@
-import { useEffect, useState } from 'react';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import React, { useState, useRef } from 'react';
 
 import Styles from './styles.module.css';
 
 import { getProjectsList } from '../../helpers/API'; // fonte de dados pro render
 
 import IndividualProjectCard from '../IndividualProjectCard'; //importacao Do Card Interno
+import { debounce } from '../../helpers/debounceHelper';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 function ProjectsCarrusell() {
-  const [marginValue, setMarginValue] = useState(0);
   const [selectedIten, setSelectedIten] = useState(0);
 
   const projectsList = getProjectsList();
 
-  const handleClickRight = () => {
-    if (projectsList.length === selectedIten + 1) return;
-    if (window.innerWidth < 1055.55) {
-      setMarginValue(marginValue - window.innerWidth * 0.9 - 10);
-    } else {
-      setMarginValue(marginValue - 950 - 10);
-    }
-    setSelectedIten(selectedIten + 1);
+  const containerRef = useRef<HTMLElement>(null);
+
+  const valueToScroll = (): number => {
+    const screenWidthSize = window.innerWidth;
+
+    if (screenWidthSize > 1055) return 950;
+    else return screenWidthSize * 0.9;
   };
 
   const handleClickLeft = () => {
-    if (marginValue >= 0) return;
-    if (window.innerWidth < 1055.55) {
-      setMarginValue(marginValue + window.innerWidth * 0.9 + 10);
-    } else {
-      setMarginValue(marginValue + 950 + 10);
-    }
-    setSelectedIten(selectedIten - 1);
+    containerRef.current?.scrollTo(
+      containerRef.current.scrollLeft - valueToScroll(),
+      0
+    );
+  };
+
+  const handleClickRight = () => {
+    containerRef.current?.scrollTo(
+      containerRef.current.scrollLeft + valueToScroll(),
+      0
+    );
   };
 
   const handlePaginatorClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
+    containerRef.current?.scrollTo(valueToScroll() * +e.currentTarget.id, 0);
     setSelectedIten(+e.currentTarget.id);
   };
 
-  useEffect(() => {
-    const moveRowListToSelection = () => {
-      if (selectedIten === 0) {
-        setMarginValue(0);
-      } else {
-        if (window.innerWidth < 1055.55) {
-          setMarginValue((window.innerWidth * 0.9 - 10) * -selectedIten);
-        } else {
-          setMarginValue((950 - 10) * -selectedIten);
-        }
-      }
+  const handlerScroll = (e: React.UIEvent<HTMLElement, UIEvent>) => {
+    const updateCounter = () => {
+      containerRef.current &&
+        setSelectedIten(
+          parseInt(
+            (containerRef.current.scrollLeft / valueToScroll()).toString()
+          )
+        );
     };
 
-    let timer: any;
-
-    const debounceHandler = () => {
-      clearTimeout(timer);
-
-      timer = setTimeout(() => {
-        moveRowListToSelection();
-      }, 300);
-    };
-
-    window.addEventListener('resize', debounceHandler);
-
-    return () => window.removeEventListener('resize', debounceHandler);
-  }, [selectedIten]);
-
-  useEffect(() => {
-    const moveRowListToSelection = () => {
-      if (selectedIten === 0) {
-        setMarginValue(0);
-      } else {
-        if (window.innerWidth < 1055.55) {
-          setMarginValue((window.innerWidth * 0.9 - 10) * -selectedIten);
-        } else {
-          setMarginValue((950 - 10) * -selectedIten);
-        }
-      }
-    };
-
-    moveRowListToSelection();
-  }, [selectedIten]);
+    debounce(updateCounter, 200);
+  };
 
   return (
-    <article /*itens={projectsList.length} marginValue={marginValue}*/>
-      {/* <div className="arrowLeft" onClick={handleClickLeft}>
-        <IoIosArrowBack className="icon" />
-      </div>
-      <div className="itensContainer" style={{width: marginValue *  + (${(props) => props.itens - 1}) *10}}>
-        {projectsList.map((e, key) => (
-          <IndividualProjectCard
-            title={e.title}
-            imagesList={e.imagesList}
-            technologies={e.technologies}
-            features={e.features}
-            gitLink={e.gitLink}
-            tryLink={e.tryLink}
-            key={key}
-          />
-        ))}
-      </div>
-      <div className="arrowRight" onClick={handleClickRight}>
-        <IoIosArrowForward className="icon" />
-      </div>
-      <div className="itensCounter">
+    <>
+      <article
+        ref={containerRef}
+        className={Styles.container}
+        onScroll={handlerScroll}
+      >
+        <div className={Styles.arrowLeft} onClick={handleClickLeft}>
+          <IoIosArrowBack className={Styles.icon} />
+        </div>
+        <div className={Styles.itensContainer}>
+          {projectsList.map((e, key) => (
+            <IndividualProjectCard
+              title={e.title}
+              imagesList={e.imagesList}
+              technologies={e.technologies}
+              features={e.features}
+              gitLink={e.gitLink}
+              tryLink={e.tryLink}
+              key={key}
+            />
+          ))}
+        </div>
+        <div className={Styles.arrowRight} onClick={handleClickRight}>
+          <IoIosArrowForward className={Styles.icon} />
+        </div>
+      </article>
+      <div className={Styles.itensCounter}>
         {projectsList.map((e, key) => (
           <div
             key={key}
             onClick={(e) => handlePaginatorClick(e)}
             id={`${key}`}
-            className={`itensCounter__iten ${
-              selectedIten === key ? 'selected' : ''
+            className={`${Styles.itensCounter__iten} ${
+              selectedIten === key ? Styles.selected : ''
             }`}
           ></div>
         ))}
-      </div> */}
-    </article>
+      </div>
+    </>
   );
 }
 

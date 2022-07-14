@@ -10,8 +10,6 @@
   
   .link {
     display: flex;
-    color: inherit;
-    text-decoration: none;
     margin-left: 10px;
   }
 

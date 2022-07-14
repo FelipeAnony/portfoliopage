@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { AiFillGithub, AiOutlineArrowRight } from 'react-icons/ai';
 import MainButton from '../MainButton';
 
@@ -25,41 +25,53 @@ function IndividualProjectCard({
   const [selectedImg, setSelectedImg] = useState(0);
 
   return (
-    <section className={Styles.ontainer}>
-      <div className="imagesContainer">
-        <div className="mainImage">
-          <img src={imagesList[selectedImg]} alt="Project print" />
+    <section className={Styles.container}>
+      <div className={Styles.imagesContainer}>
+        <div className={Styles.mainImage}>
+          <Image
+            src={imagesList[selectedImg]}
+            alt="Project print"
+            layout="fill"
+            objectFit="contain"
+          />
         </div>
-        <div className="imagesRow">
+        <div className={Styles.imagesRow}>
           {imagesList.map((e, key) => (
             <div
               key={key}
               id={`${key}`}
-              className={`${selectedImg === key ? 'selected' : ''}`}
+              className={`${selectedImg === key ? Styles.selected : ''} ${
+                Styles.div
+              }`}
               onClick={(e) => setSelectedImg(+e.currentTarget.id)}
             >
-              <img src={e} alt="Project print" />
+              <Image
+                src={e}
+                alt="Project print"
+                layout="fill"
+                objectFit="contain"
+              />
             </div>
           ))}
         </div>
       </div>
-      <div className="infoContainer">
-        <div className="title">{title}</div>
-        <div className="description">
-          <span className="span1">Technologies used:</span>
-          <ul className="technologies">
+      <div className={Styles.infoContainer}>
+        <div className={Styles.title}>{title}</div>
+        <div className={Styles.description}>
+          <span className={Styles.techsUsed}>Technologies used:</span>
+          <ul className={Styles.technologies}>
             {technologies.map((e, key) => (
               <li key={key}>{e}</li>
             ))}
           </ul>
-          <span className="span2">Features</span>
-          <ul className="features">
+          <span className={Styles.featuresTitle}>Features</span>
+          <ul className={Styles.features}>
             {features.map((e, key) => (
               <li key={key}>{e}</li>
             ))}
           </ul>
         </div>
-        <div className="actions">
+        <div className={Styles.actions}>
           <MainButton bgColor={'darkgrey'} disabled={gitLink ? false : true}>
             <>
               <AiFillGithub />
@@ -92,4 +104,4 @@ function IndividualProjectCard({
   );
 }
 
-export default IndividualProjectCard;
+export default memo(IndividualProjectCard, () => true);
